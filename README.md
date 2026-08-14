@@ -37,7 +37,7 @@ This frontend template is designed to work seamlessly with [`@myelophone/goserve
 
 For the fastest full-stack start, create the backend from [`@myelophone/goserver-template`](https://github.com/myelophone/goserver-template):
 
-- **Frontend:** [`myelophone/nuxt-template`](https://github.com/myelophone/nuxt-template/generate)
+- **Frontend:** [`@myelophone/nuxt-template`](https://github.com/myelophone/nuxt-template/generate)
 - **Backend:** [`@myelophone/goserver-template`](https://github.com/myelophone/goserver-template/generate)
 
 The responsibilities fit together naturally:
