@@ -56,6 +56,10 @@ export default defineNuxtConfig({
 				consumeUrl: false,
 				enabled: true,
 			},
+			tally: {
+				domain: 'tally.so',
+			},
+			noindex: false,
 		},
 	},
 });
