@@ -267,12 +267,14 @@ Static files belong in `public/`; bundled styles, images, and fonts belong in `a
 extends: ['@myelophone/nuxt']
 ```
 
-No override file is required. When an optional `myelophone.ts` exists, it is imported and deep-merged over the layer configuration:
+No override file is required. When an optional root `myelophone.ts` exists, it is imported and deep-merged over the layer configuration:
 
 - objects merge recursively;
 - arrays append values not already present;
 - defined project values override scalar layer values;
 - `extends` remains owned by the template.
+
+For template development, `playground/nuxt.config.ts` first extends the root template config and then deep-merges an optional `playground/myelophone.ts` on top. The effective order is therefore: `@myelophone/nuxt` defaults, root `myelophone.ts`, then `playground/myelophone.ts` for sandbox-only overrides.
 
 Example `myelophone.ts`:
 
@@ -303,18 +305,22 @@ export default defineNuxtConfig({
  runtimeConfig: {
   apiBaseServer: "http://goserver:8080",
   public: {
-   siteUrl: "https://example.com",
    apiBase: "https://example.com/api",
-   cookieScripts,
-   cookieControl: { enabled: true },
-   bundleTranslations: false,
-   splitCss: true,
-   stores: { cart: true, user: true },
-   frankfurterBaseCurrency: "EUR",
-   frankfurterCurrencies: ["USD", "PLN", "GBP"],
-   creativeCursor: false,
-   tally: { domain: "tally.so" },
   },
+ },
+
+ myelophone: {
+  siteDomain: "https://example.com",
+  cookieScripts,
+  cookieControl: { enabled: true },
+  bundleTranslations: false,
+  splitCss: true,
+  stores: { cart: true, user: true },
+  frankfurterBaseCurrency: "EUR",
+  frankfurterCurrencies: ["USD", "PLN", "GBP"],
+  creativeCursor: false,
+  ssrStream: true,
+  tally: { domain: "tally.so" },
  },
 });
 ```
@@ -323,33 +329,39 @@ Do not place secrets in `runtimeConfig.public`. Private API credentials belong i
 
 ### Runtime configuration reference
 
-| Key                              | Default             | Purpose                                                            |
-| -------------------------------- | ------------------- | ------------------------------------------------------------------ |
-| `apiBaseServer`                  | unset               | Private server-side base URL used by `useApi`.                     |
-| `public.apiBase`                 | unset               | Public API base fallback on the server.                            |
-| `public.siteUrl`                 | unset               | Production origin for SSR-generated alternate and breadcrumb URLs. |
-| `public.cookieControl.enabled`   | `true` in the layer | Enable consent UI and preference handling.                         |
-| `public.cookieScripts`           | empty               | Consent-aware integrations and cookieless notices.                 |
-| `public.bundleTranslations`      | `true`              | Bundle translations; `false` enables locale chunk grouping.        |
-| `public.splitCss`                | `true`              | Vite CSS code splitting.                                           |
-| `public.stores.cart`             | `false`             | Initialize cart, rates, persistence, calculations and tab sync.    |
-| `public.stores.user`             | `false`             | Initialize user/session presentation state and tab sync.           |
-| `public.frankfurterCurrencies`   | `[]`                | Quote currencies for the included rate endpoint.                   |
-| `public.frankfurterBaseCurrency` | `USD`               | Exchange-rate base currency.                                       |
-| `public.creativeCursor`          | `false`             | Custom fine-pointer cursor.                                        |
-| `public.tally.domain`            | `tally.so`          | Tally embed host.                                                  |
+| Key              | Default | Purpose                                        |
+| ---------------- | ------- | ---------------------------------------------- |
+| `apiBaseServer`  | unset   | Private server-side base URL used by `useApi`. |
+| `public.apiBase` | unset   | Public API base fallback on the server.        |
+
+### Myelophone build-time configuration
+
+| Key                                  | Default                 | Purpose                                                            |
+| ------------------------------------ | ----------------------- | ------------------------------------------------------------------ |
+| `myelophone.siteDomain`              | `http://localhost:3000` | Production origin for SSR-generated alternate and breadcrumb URLs. |
+| `myelophone.cookieControl.enabled`   | `true` in the layer     | Enable consent UI and preference handling.                         |
+| `myelophone.cookieScripts`           | empty                   | Consent-aware integrations and cookieless notices.                 |
+| `myelophone.bundleTranslations`      | `true`                  | Bundle translations; `false` enables locale chunk grouping.        |
+| `myelophone.splitCss`                | `false`                 | Vite CSS code splitting.                                           |
+| `myelophone.stores.cart`             | `false`                 | Initialize cart, rates, persistence, calculations and tab sync.    |
+| `myelophone.stores.user`             | `false`                 | Initialize user/session presentation state and tab sync.           |
+| `myelophone.frankfurterCurrencies`   | `[]`                    | Quote currencies for the included rate endpoint.                   |
+| `myelophone.frankfurterBaseCurrency` | `USD`                   | Exchange-rate base currency.                                       |
+| `myelophone.creativeCursor`          | `false`                 | Custom fine-pointer cursor.                                        |
+| `myelophone.ssrStream`               | `false`                 | Enable Nuxt experimental streaming SSR for non-static builds.      |
+| `myelophone.tally.domain`            | `tally.so`              | Tally embed host.                                                  |
 
 ### Environment variables
 
-| Variable                | Purpose                                                                                         |
-| ----------------------- | ----------------------------------------------------------------------------------------------- |
-| `NUXT_API_BASE_SERVER`  | Server-only API origin, for example `http://goserver:8080`.                                     |
-| `NUXT_PUBLIC_API_BASE`  | Browser-visible API origin if required.                                                         |
-| `NUXT_PUBLIC_SITE_URL`  | Absolute public site origin.                                                                    |
-| `NUXT_STATIC=true`      | Select static generation behavior. Set automatically by `yarn generate`.                        |
-| `NITRO_PRESET=<preset>` | Override the SSR preset; layer default is `node-cluster`.                                       |
-| `PROD_DIST=true`        | Exclude framework playground locales. Set by normal template scripts.                           |
-| `NUXT_PLAYGROUND=true`  | Include the `playground/` test application during template development. Set by sandbox scripts. |
+| Variable                  | Purpose                                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `NUXT_API_BASE_SERVER`    | Server-only API origin, for example `http://goserver:8080`.                                     |
+| `NUXT_PUBLIC_API_BASE`    | Browser-visible API origin if required.                                                         |
+| `NUXT_STATIC=true`        | Select static generation behavior. Set automatically by `yarn generate`.                        |
+| `NUXT_SSR_STREAMING=true` | Enable Nuxt experimental streaming SSR for non-static builds.                                   |
+| `NITRO_PRESET=<preset>`   | Override the SSR preset; layer default is `node-cluster`.                                       |
+| `PROD_DIST=true`          | Exclude framework playground locales. Set by normal template scripts.                           |
+| `NUXT_PLAYGROUND=true`    | Include the `playground/` test application during template development. Set by sandbox scripts. |
 
 ## Commands
 
@@ -446,7 +458,7 @@ The inherited shell provides:
 - `SeoNoIndex` for 4xx pages;
 - `SeoContentNoIndex` for client-only `data-nosnippet` content.
 
-Always set the production `public.siteUrl`; SSR cannot generate reliable absolute SEO URLs without it.
+Always set the production `myelophone.siteDomain`; SSR cannot generate reliable absolute SEO URLs without it.
 
 The supplied `public/_robots.txt` allows ordinary crawling and asks compliant crawlers to clean tracking/filter parameters. Review it for each project's search requirements.
 
@@ -492,7 +504,7 @@ Programmatic control is available through `useCookieControl()` and `useCookieMod
 
 ## User state
 
-Enable `public.stores.user` and connect it to @myelophone/goserver or another backend:
+Enable `myelophone.stores.user` and connect it to @myelophone/goserver or another backend:
 
 ```ts
 const user = useUserStore();
@@ -523,7 +535,7 @@ The browser store is presentation state only. Keep credentials in secure HttpOnl
 
 ## Cart and currencies
 
-Enable `public.stores.cart`:
+Enable `myelophone.stores.cart`:
 
 ```ts
 const cart = useCartStore();
@@ -698,6 +710,8 @@ getYoutubePoster("dQw4w9WgXcQ");
 const refreshLatest = useAsyncRefresh(refresh);
 await refreshLatest();
 ```
+
+To validate forms @myelophone/nuxt-template uses Valibot.
 
 ## SSR, static generation, and Docker
 

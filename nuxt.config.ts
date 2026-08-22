@@ -1,8 +1,10 @@
 import { defineNuxtConfig, type NuxtConfig } from 'nuxt/config';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const myelophonePath = path.resolve(__dirname, 'myelophone.ts');
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const myelophonePath = path.resolve(dirname, 'myelophone.ts');
 
 const baseConfig = defineNuxtConfig({
 	extends: ['@myelophone/nuxt'],
@@ -16,11 +18,30 @@ function isNuxtConfig(value: unknown): value is NuxtConfig {
 
 if (fs.existsSync(myelophonePath)) {
 	try {
-		const mod = await import(myelophonePath);
+		const mod = await import(pathToFileURL(myelophonePath).href);
 		const config = mod.default || mod;
 
 		if (isNuxtConfig(config)) {
 			extendedConfig = config as NuxtConfig;
+			const title = extendedConfig.app?.head?.title;
+			const appConfig = extendedConfig.appConfig as
+				| {
+						defaultSeo?: {
+							title?: string;
+							description?: string;
+						};
+				  }
+				| undefined;
+
+			if (typeof title === 'string' && !appConfig?.defaultSeo?.title) {
+				extendedConfig.appConfig = {
+					...(extendedConfig.appConfig || {}),
+					defaultSeo: {
+						...(appConfig?.defaultSeo || {}),
+						title,
+					},
+				};
+			}
 		} else {
 			console.warn(
 				'[myelophone-nuxt] ignored: myelophone.ts export is not a valid NuxtConfig object.',
