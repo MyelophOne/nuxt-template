@@ -3,11 +3,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import { cleanEmptyCssPlugin } from './vite/plugins/clean-css';
+import postcssViewportFallback from './vite/plugins/postcss-viewport-fallback';
+import noImportant from 'postcss-no-important';
+import postcssAddViewportUnits from './vite/plugins/postcss-add-viewportunits';
+
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const myelophonePath = path.resolve(dirname, 'myelophone.ts');
 
 const baseConfig = defineNuxtConfig({
 	extends: ['@myelophone/nuxt'],
+	vite: {
+		plugins: [
+			cleanEmptyCssPlugin({
+				purgeTailwindUtilities: true,
+				postcssPlugins: [
+					postcssViewportFallback(),
+					noImportant(),
+					postcssAddViewportUnits(),
+				],
+			}),
+		],
+	},
 });
 
 let extendedConfig: NuxtConfig = {};
