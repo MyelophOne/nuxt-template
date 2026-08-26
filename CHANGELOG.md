@@ -1,3 +1,7 @@
+## 📦 Release 0.6.0 (2026-08-26)
+### ✨ Features
+- update to typescript 7
+
 ## 📦 Release 0.5.0 (2026-08-22)
 ### ⏳ Work in progress
 - initial commit
