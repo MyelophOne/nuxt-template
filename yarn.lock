@@ -1603,7 +1603,7 @@ __metadata:
     "@biomejs/biome": "npm:^2.5.11"
     "@commitlint/cli": "npm:^21.2.2"
     "@commitlint/config-conventional": "npm:^21.2.2"
-    "@myelophone/nuxt": "https://github.com/myelophone/nuxt.git#commit=bfee7a84febc65beed1056f59863dbe8a24765bc"
+    "@myelophone/nuxt": "npm:^0.19.1"
     "@nuxt/fonts": "npm:^0.14.0"
     "@nuxt/image": "npm:^2.1.0"
     "@nuxt/schema": "npm:^4.5.2"
@@ -1656,12 +1656,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myelophone/nuxt@https://github.com/myelophone/nuxt.git#commit=bfee7a84febc65beed1056f59863dbe8a24765bc":
-  version: 0.18.2
-  resolution: "@myelophone/nuxt@https://github.com/myelophone/nuxt.git#commit=bfee7a84febc65beed1056f59863dbe8a24765bc"
+"@myelophone/nuxt@npm:^0.19.1":
+  version: 0.19.1
+  resolution: "@myelophone/nuxt@npm:0.19.1"
   dependencies:
     fuse.js: "npm:^7.5.0"
-  checksum: 10c0/27f19b795cf383c99e5de76acb528dc36a7c37fe105900c04ea4922f65ea862a30cbdeb534e1d534b396d493bb6077b1261c607f5ccbb99306b51fd5d4a59c5f
+  checksum: 10c0/cd450001756705b7242a85af84e6ada72ab9734e3664ae41b4fd28ef5a08ee71444de81532701c82b5f150e6d787af26517b93e650a742f6eafc73d293b96e68
   languageName: node
   linkType: hard
 

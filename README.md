@@ -1,12 +1,14 @@
 # MyelophOne Nuxt Template
 
-Ready-to-use production-oriented frontend template powered by [`@myelophone/nuxt`](https://github.com/myelophone/nuxt): Nuxt 4, Tailwind CSS 4, SSR/SSG, multilingual routing, consent management, SEO, Pinia stores, security defaults, performance tooling, Docker, and a reusable UI library.
+Ready-to-use production-oriented frontend template powered by [`@myelophone/nuxt`](https://www.npmjs.com/package/@myelophone/nuxt): Nuxt 4, Tailwind CSS 4, SSR/SSG, multilingual routing, consent management, SEO, Pinia stores, security defaults, performance tooling, Docker, and a reusable UI library.
 
 **[Create a repository from this template](https://github.com/myelophone/nuxt-template/generate)** · **[Framework documentation](https://github.com/myelophone/nuxt)** · **[@myelophone/goserver-template](https://github.com/myelophone/goserver-template/generate)**
 
 ## What is this
 
-`@myelophone/nuxt-template` is the application-facing starting point for projects built on the [`@myelophone/nuxt`](https://github.com/myelophone/nuxt) framework layer. The layer owns shared framework behavior; this repository is where an application adds its pages, components, locales, assets, server endpoints, configuration, and tests.
+`@myelophone/nuxt-template` is the application-facing starting point for projects built on the [`@myelophone/nuxt`](https://www.npmjs.com/package/@myelophone/nuxt) framework layer. The layer owns shared framework behavior; this repository is where an application adds its pages, components, locales, assets, server endpoints, configuration, and tests.
+
+The template installs the layer from npm through its `package.json`; no GitHub dependency, GitHub Packages configuration, or repository access is required.
 
 Use this template for:
 
@@ -810,7 +812,7 @@ Only `app/pages/.gitkeep` and `app/locales/.gitkeep` are initially present. Crea
 
 The `playground/` directory is exclusively a test application for developing and verifying the template, following the Nuxt convention for module/layer development. It is not the end application's source directory; application code belongs in the root `app/`.
 
-The template currently consumes `@myelophone/nuxt` directly from GitHub. Treat framework updates like dependency upgrades:
+The template consumes `@myelophone/nuxt` from npm. Treat framework updates like dependency upgrades:
 
 1. review upstream changes and README;
 2. update the lockfile intentionally;
