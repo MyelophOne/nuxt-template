@@ -1,3 +1,10 @@
+## 📦 Release 0.7.0 (2026-09-04)
+### ✨ Features
+- update dependencies
+
+### 📚 Documentation
+- update docs
+
 ## 📦 Release 0.6.1 (2026-08-30)
 ### 🐛 Bug Fixes
 - update dependencies
