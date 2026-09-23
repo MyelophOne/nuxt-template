@@ -1603,7 +1603,7 @@ __metadata:
     "@biomejs/biome": "npm:^2.5.14"
     "@commitlint/cli": "npm:^21.2.3"
     "@commitlint/config-conventional": "npm:^21.2.3"
-    "@myelophone/nuxt": "npm:^0.20.0"
+    "@myelophone/nuxt": "npm:^0.20.1"
     "@nuxt/fonts": "npm:^0.14.0"
     "@nuxt/image": "npm:^2.1.0"
     "@nuxt/schema": "npm:^4.5.2"
@@ -1656,12 +1656,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myelophone/nuxt@npm:^0.20.0":
-  version: 0.20.0
-  resolution: "@myelophone/nuxt@npm:0.20.0"
+"@myelophone/nuxt@npm:^0.20.1":
+  version: 0.20.1
+  resolution: "@myelophone/nuxt@npm:0.20.1"
   dependencies:
     fuse.js: "npm:^7.5.0"
-  checksum: 10c0/86bce30bcc5f1e63d687c2ed034695355ad9f545289ae1726cabe61cb7ee45d9216f92c948051a2bf5f18302593d4a659625f89a9fb3bff5e84969adb7f18429
+  checksum: 10c0/49773ec9381459127883ecbbd6d41114d4d9c3915d6d7f00db51b670ab97b457565aaafdb612ec7f78cb485f8012821bd05c368343c677eb8c1ac8a2de2ec0cd
   languageName: node
   linkType: hard
 

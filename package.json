@@ -44,7 +44,7 @@
     "@biomejs/biome": "^2.5.14",
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
-    "@myelophone/nuxt": "^0.20.0",
+    "@myelophone/nuxt": "^0.20.1",
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/image": "^2.1.0",
     "@nuxt/schema": "^4.5.2",
