@@ -3,10 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-import { cleanEmptyCssPlugin } from './vite/plugins/clean-css';
-import postcssViewportFallback from './vite/plugins/postcss-viewport-fallback';
+import { cleanEmptyCssPlugin } from './vite/plugins/clean-css.ts';
+import postcssViewportFallback from './vite/plugins/postcss-viewport-fallback.ts';
 import noImportant from 'postcss-no-important';
-import postcssAddViewportUnits from './vite/plugins/postcss-add-viewportunits';
+import postcssAddViewportUnits from './vite/plugins/postcss-add-viewportunits.ts';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const myelophonePath = path.resolve(dirname, 'myelophone.ts');
