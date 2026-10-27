@@ -1,3 +1,7 @@
+## 📦 Release 0.8.2 (2026-10-17)
+### 🐛 Bug Fixes
+- update dependencies
+
 ## 📦 Release 0.8.1 (2026-10-13)
 ### 🐛 Bug Fixes
 - update dependencies
