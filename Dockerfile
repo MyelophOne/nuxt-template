@@ -1,21 +1,22 @@
-FROM node:alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN yarn install
-
 ENV YARN_ENABLE_INLINE_BUILDS=1
-RUN yarn build
 
-FROM alpine:latest
-RUN apk add --no-cache nodejs
+RUN node .yarn/releases/yarn-4.18.1.cjs install --immutable
+
+RUN node .yarn/releases/yarn-4.18.1.cjs build
+
+FROM node:24-alpine AS runtime
 
 WORKDIR /app
 
 COPY --from=builder /app/.output ./
 COPY --from=builder /app/LICENSE ./LICENSE
+COPY --from=builder /app/scripts/healthcheck.mjs ./scripts/healthcheck.mjs
 
 ENV NODE_ENV=production
 

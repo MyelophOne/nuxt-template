@@ -3,16 +3,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 3000:3000
+    expose:
+      - 3000
     environment:
       - NODE_ENV=production
+      - NITRO_HOST=0.0.0.0
+      - NITRO_PORT=3000
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:3000"]
+      test: ["CMD", "node", "scripts/healthcheck.mjs"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 30s
     logging:
       driver: "json-file"
       options:
