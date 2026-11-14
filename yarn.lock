@@ -1401,7 +1401,7 @@ __metadata:
     "@myelophone/nuxt": "npm:^0.22.2"
     "@nuxt/fonts": "npm:^1.2.0"
     "@nuxt/image": "npm:^2.2.0"
-    "@nuxt/schema": "npm:^4.6.2"
+    "@nuxt/schema": "npm:^4.6.4"
     "@nuxt/scripts": "npm:^1.3.12"
     "@nuxt/types": "npm:^2.18.1"
     "@nuxtjs/fontaine": "npm:^0.5.0"
@@ -2042,7 +2042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/schema@npm:4.6.2, @nuxt/schema@npm:^4.6.2":
+"@nuxt/schema@npm:4.6.2":
   version: 4.6.2
   resolution: "@nuxt/schema@npm:4.6.2"
   dependencies:
@@ -2053,6 +2053,20 @@ __metadata:
     pkg-types: "npm:^2.3.3"
     std-env: "npm:^4.3.0"
   checksum: 10c0/357837194b1c2a450542966c1ce4037d5c6ff1ea36dc583bd3e3294c39403520b2feb06c811fed9a8b8ca63378a65a4e280ab9d96444bf0f4a1def357cd5e496
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:^4.6.4":
+  version: 4.6.4
+  resolution: "@nuxt/schema@npm:4.6.4"
+  dependencies:
+    "@vue/shared": "npm:^3.5.44"
+    defu: "npm:^6.1.7"
+    nostics: "npm:^1.3.0"
+    pathe: "npm:^2.0.3"
+    pkg-types: "npm:^2.4.0"
+    std-env: "npm:^4.3.0"
+  checksum: 10c0/ed48ac73d12cef48885374972b2f0e709008c408475d2df27c3e2699991f63e86af2181cbcf15b5459c7979184b854dde2d2cb7e097102aff5045ae7f64e33c7
   languageName: node
   linkType: hard
 
@@ -10227,6 +10241,17 @@ __metadata:
     exsolve: "npm:^1.1.1"
     pathe: "npm:^2.0.3"
   checksum: 10c0/37d08d561428ab3dc09eebddd8860d9ab7851bbceeaa99d3b7fb246bdc4638d22be2cc1f8e8e38b440c5c7b30df7c20f2cbd8f0d74bb343d26a836cd9accd931
+  languageName: node
+  linkType: hard
+
+"pkg-types@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "pkg-types@npm:2.4.0"
+  dependencies:
+    confbox: "npm:^0.3.1"
+    exsolve: "npm:^1.1.3"
+    pathe: "npm:^2.0.3"
+  checksum: 10c0/80782725a4bf5eae540375a811911875a54ecd3f42d4a8fdc404de1d1693404187a00801c8719ee69b8c33f8a28339eeebd973dbb87a27a24c8d6089452538a6
   languageName: node
   linkType: hard
 
