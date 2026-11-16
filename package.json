@@ -71,7 +71,7 @@
     "conventional-changelog-conventionalcommits": "^10.4.1",
     "jiti": "^2.7.0",
     "markdown-it": "^15.0.3",
-    "nuxt": "^4.6.2",
+    "nuxt": "^4.6.4",
     "nuxt-api-party": "^4.0.1",
     "nuxt-link-checker": "^6.0.1",
     "nuxt-og-image": "^7.0.7",
