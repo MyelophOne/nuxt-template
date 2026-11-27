@@ -1,3 +1,7 @@
+## 📦 Release 0.9.1 (2026-10-30)
+### 🐛 Bug Fixes
+- update docker files
+
 ## 📦 Release 0.9.0 (2026-10-27)
 ### ✨ Features
 - start adding instructions
