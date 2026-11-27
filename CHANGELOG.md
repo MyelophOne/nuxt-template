@@ -1,3 +1,7 @@
+## 📦 Release 0.10.0 (2026-11-27)
+### ✨ Features
+- update dependencies
+
 ## 📦 Release 0.9.1 (2026-10-30)
 ### 🐛 Bug Fixes
 - update docker files
